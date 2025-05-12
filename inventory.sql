@@ -198,8 +198,3 @@ INSERT INTO Sales(SaleID, Product_id, SaleDate, QuantitySold) VALUES
 (48, 55, '2024-02-17', 3), -- Power Bank sold on February 17, 2024, 3 units
 (49, 63, '2024-02-18', 2), -- Tea Set sold on February 18, 2024, 2 units
 (50, 71, '2024-02-19', 1); -- Laundry Detergent sold on February 19, 2024, 1 unit
-
-
-Reports: Create SQL queries to generate basic reports such as total sales by product or category, current inventory status, etc.
-Documentation: Provide documentation for your database schema, explaining the purpose of each table and its columns, along with sample queries for basic operations and reports.
-Testing: Test your SQL queries thoroughly to ensure they perform as expected and handle edge cases gracefully (e.g., attempting to sell more units than available in stock).*/
