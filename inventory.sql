@@ -145,27 +145,6 @@ INSERT INTO Product(Product_id, Product_Name, Category_id, Unit_price, Units_ins
 (99, 'Backpack', 133, 50.00, 200),
 (100, 'Travel Pillow', 133, 15.00, 300);
 
--- Update Product: SQL queries to update product information (e.g., update unit price or units in stock). 
-	-- Update based on the Unit Price 
-UPDATE Product 
-SET Unit_price = Unit_price * 0.95 -- Unit_Price decrease of 5% for Electronics and Mobile Devices due to New Year Offers. 
-WHERE Category_id = 102 OR Category_id = 101;
-
--- Update based on the Unit Stock after New Year
-UPDATE Product
-SET Units_instock = Units_instock - 5
-WHERE Category_id = 101 OR Category_id = 102 AND Units_instock >= 5;
-
--- Update the Product Name (Desktop Computer) to Personal Computer 
-SET SQL_SAFE_UPDATES = 0;
-UPDATE Product 
-SET Product_Name = "PC" 
-WHERE Product_Name = "Desktop Computer"; 
-
--- Delete Product: SQL queries to delete a product (Thermometer) from the Products table.
-DELETE FROM Product 
-WHERE Product_Name = "Thermometer"; 
-
 -- Record Sales: SQL queries to record product sales in the Sales table.
 	-- Inserting sample sales data into the Sales table
 INSERT INTO Sales(SaleID, Product_id, SaleDate, QuantitySold) VALUES
@@ -221,20 +200,6 @@ INSERT INTO Sales(SaleID, Product_id, SaleDate, QuantitySold) VALUES
 (50, 71, '2024-02-19', 1); -- Laundry Detergent sold on February 19, 2024, 1 unit
 
 
--- Using Join Operation and CASE(WHEN, ELSE) to update the Units_instock in the Products table based on the QuantitySold in the Sales table. 
-UPDATE Product 
-LEFT JOIN Sales ON Product.Product_id = Sales.Product_id
-SET Product.Units_instock = 
-	CASE
-		WHEN  Sales.QuantitySold IS NOT NULL THEN Product.Units_instock - Sales.QuantitySold
-		ELSE Product.Units_instock
-	END; 
-    
-SELECT * FROM Product
-
-/* Remaning Work to Complete
-Data Integrity: Implement data integrity constraints such as foreign key constraints between Products.CategoryID and Categories.CategoryID.
-Data Validation: Include basic data validation checks (e.g., ensuring unit price is positive, quantity sold is non-negative).
 Reports: Create SQL queries to generate basic reports such as total sales by product or category, current inventory status, etc.
 Documentation: Provide documentation for your database schema, explaining the purpose of each table and its columns, along with sample queries for basic operations and reports.
 Testing: Test your SQL queries thoroughly to ensure they perform as expected and handle edge cases gracefully (e.g., attempting to sell more units than available in stock).*/
